@@ -1,0 +1,42 @@
+
+<div class="task-container">
+  <h2>Smart Task Scheduler</h2>
+  
+  <div *ngIf="loading" class="loading">Loading tasks...</div>
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!selectedTask">
+    <button (click)="addNewTask()" class="add-btn">Add Task</button>
+    
+    <div *ngIf="tasks.length === 0 && !loading" class="no-tasks">
+      No tasks found. Add a new task to get started!
+    </div>
+    
+    <div class="task-list">
+      <div *ngFor="let task of tasks" class="task-card" [ngClass]="getPriorityClass(task.priority)">
+        <div class="task-header">
+          <h3>{{ task.title }}</h3>
+          <span class="status-badge" [ngClass]="task.status">{{ task.status }}</span>
+        </div>
+        
+        <p *ngIf="task.description">{{ task.description }}</p>
+        
+        <div class="task-details">
+          <div>Priority: {{ task.priority }}</div>
+          <div *ngIf="task.dueDate">Due: {{ task.dueDate | date }}</div>
+        </div>
+        
+        <div class="task-actions">
+          <button (click)="editTask(task)" class="edit-btn">Edit</button>
+          <button (click)="deleteTask(task._id!)" class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-task-form 
+    *ngIf="selectedTask" 
+    [task]="selectedTask" 
+    (taskSaved)="onTaskSaved()">
+  </app-task-form>
+</div>

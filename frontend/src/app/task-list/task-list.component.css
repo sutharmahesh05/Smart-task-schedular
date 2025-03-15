@@ -1,0 +1,38 @@
+table {
+    width: 100%;
+  }
+  
+  .title-cell {
+    max-width: 300px;
+  }
+  
+  .title-cell h4 {
+    margin: 0;
+    font-weight: 500;
+  }
+  
+  .title-cell p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .priority-badge {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .priority-1 { background-color: #8BC34A; }
+  .priority-2 { background-color: #4CAF50; }
+  .priority-3 { background-color: #FF9800; }
+  .priority-4 { background-color: #F44336; }
+  .priority-5 { background-color: #9C27B0; }
